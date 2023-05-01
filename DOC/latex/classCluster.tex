@@ -1,0 +1,246 @@
+\hypertarget{classCluster}{}\doxysection{Referencia de la Clase Cluster}
+\label{classCluster}\index{Cluster@{Cluster}}
+
+
+Representa un sistema de procesadores distribuidos en forma de arbol binario.  
+
+
+
+
+{\ttfamily \#include $<$Cluster.\+hh$>$}
+
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCluster_aee7feb1d599d4c8fda6c3ee83e86ba81}{Cluster}} ()
+\begin{DoxyCompactList}\small\item\em Creadora por defecto. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCluster_a22c1cf06b4ec6816716578c5d8a41643}{modificar}} (string id\+\_\+procesador, const \mbox{\hyperlink{classCluster}{Cluster}} \&c, string \&error)
+\begin{DoxyCompactList}\small\item\em Modifica el árbol binario de procesadores. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCluster_a5e5ff5795fe8d7133533499ec116015e}{añadir\+\_\+proceso\+\_\+procesador}} (string id\+\_\+procesador, const \mbox{\hyperlink{classProceso}{Proceso}} \&p, string \&error)
+\begin{DoxyCompactList}\small\item\em Añade un proceso a un procesador específico. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCluster_acda60136939e262861f9b0df9bd08a46}{eliminar\+\_\+proceso\+\_\+procesador}} (string id\+\_\+procesador, string id\+\_\+proceso, string \&error)
+\begin{DoxyCompactList}\small\item\em Elimina un proceso de un procesador específico. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCluster_a617f9f9f270844cd80930b6ccc613318}{añadir\+\_\+proceso}} (const \mbox{\hyperlink{classProceso}{Proceso}} \&p, string \&error)
+\begin{DoxyCompactList}\small\item\em Añade un proceso al procesador adecuado. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCluster_a3b93301a46cfa8cadf8d0121e234c386}{avanzar\+\_\+tiempo}} (int t)
+\begin{DoxyCompactList}\small\item\em Avanza el tiempo de todos los procesos que estan siendo ejecutados. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCluster_a993235c1e3da5a4b817483760aae2466}{compactar\+\_\+memoria\+\_\+procesador}} (string id\+\_\+procesador, string \&error)
+\begin{DoxyCompactList}\small\item\em Compacta la memoria de un procesador procesador específico. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCluster_a622839c3b8dc923dc36f6026f35db269}{compactar\+\_\+memoria}} ()
+\begin{DoxyCompactList}\small\item\em Compacta la memoria de los procesadores del parámetro implícito. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCluster_a482d879edb37f72e49c13e9c3e6c4320}{leer}} ()
+\begin{DoxyCompactList}\small\item\em Lee los procesadores de un clúster y sus conexiones. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCluster_adda529f0782b1d4b9d6b054b8f33d9a5}{imprimir\+\_\+procesador}} (string id\+\_\+procesador, string \&error) const
+\begin{DoxyCompactList}\small\item\em Imprime en el canal de salida estándar los procesos de un procesador específico. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCluster_afc3924fd1f4643746ec3757c7777d732}{imprimir\+\_\+procesadores}} () const
+\begin{DoxyCompactList}\small\item\em Imprime en el canal de salida estándar los procesos de los procesadores del parámetro implícito. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCluster_ad6e93a4a1a6f2e9228b5e30962b4ac06}{imprimir\+\_\+estructura}} () const
+\begin{DoxyCompactList}\small\item\em Escribe la estructura de procesadores del parámetro implícito. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Representa un sistema de procesadores distribuidos en forma de arbol binario. 
+
+Permite modificar el sistema de procesadores y gestionar la ejecución de los procesos y la memoria de los procesadores. 
+
+\doxysubsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{classCluster_aee7feb1d599d4c8fda6c3ee83e86ba81}\label{classCluster_aee7feb1d599d4c8fda6c3ee83e86ba81}} 
+\index{Cluster@{Cluster}!Cluster@{Cluster}}
+\index{Cluster@{Cluster}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{Cluster()}{Cluster()}}
+{\footnotesize\ttfamily Cluster\+::\+Cluster (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creadora por defecto. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El resultado es un clúster, que contiene un único procesador, siendo este la raíz con id = 0 y la memoria sin inicializar 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classCluster_a3b93301a46cfa8cadf8d0121e234c386}\label{classCluster_a3b93301a46cfa8cadf8d0121e234c386}} 
+\index{Cluster@{Cluster}!avanzar\_tiempo@{avanzar\_tiempo}}
+\index{avanzar\_tiempo@{avanzar\_tiempo}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{avanzar\_tiempo()}{avanzar\_tiempo()}}
+{\footnotesize\ttfamily void Cluster\+::avanzar\+\_\+tiempo (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+
+
+Avanza el tiempo de todos los procesos que estan siendo ejecutados. 
+
+\begin{DoxyPrecond}{Precondición}
+t $>$= 0 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El tiempo de ejecución de todos los procesos de los procesadores del parámetro implícito progresa t unidades de tiempo. Se eliminan todos los procesos que hayan terminado en el interválo de tiempo t 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classCluster_a617f9f9f270844cd80930b6ccc613318}\label{classCluster_a617f9f9f270844cd80930b6ccc613318}} 
+\index{Cluster@{Cluster}!añadir\_proceso@{añadir\_proceso}}
+\index{añadir\_proceso@{añadir\_proceso}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{añadir\_proceso()}{añadir\_proceso()}}
+{\footnotesize\ttfamily bool Cluster\+::añadir\+\_\+proceso (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classProceso}{Proceso}} \&}]{p,  }\item[{string \&}]{error }\end{DoxyParamCaption})}
+
+
+
+Añade un proceso al procesador adecuado. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El proceso p se añade al procesador que tenga el hueco de memoria más ajustado respecto al proceso, el que tenga más memoria libre en caso de empate entre procesadores, el más cercano a la raíz en caso de empate y el que este más a la izquierda si el empate persiste. La función devuelve \textquotesingle{}true\textquotesingle{} si no ha habido ningún error, en caso contrario devuelve \textquotesingle{}false\textquotesingle{} y el mensaje de error contenido en el parámetro error (si el proceso no se puede añadir en ningún procesador) 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classCluster_a5e5ff5795fe8d7133533499ec116015e}\label{classCluster_a5e5ff5795fe8d7133533499ec116015e}} 
+\index{Cluster@{Cluster}!añadir\_proceso\_procesador@{añadir\_proceso\_procesador}}
+\index{añadir\_proceso\_procesador@{añadir\_proceso\_procesador}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{añadir\_proceso\_procesador()}{añadir\_proceso\_procesador()}}
+{\footnotesize\ttfamily bool Cluster\+::añadir\+\_\+proceso\+\_\+procesador (\begin{DoxyParamCaption}\item[{string}]{id\+\_\+procesador,  }\item[{const \mbox{\hyperlink{classProceso}{Proceso}} \&}]{p,  }\item[{string \&}]{error }\end{DoxyParamCaption})}
+
+
+
+Añade un proceso a un procesador específico. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El proceso p pasa a ejecutarse y ocupar la memoria del procesador cuyo id se indica por parámetro. La función devuelve \textquotesingle{}true\textquotesingle{} si no ha habido ningún error, en caso contrario devuelve \textquotesingle{}false\textquotesingle{} y el mensaje de error contenido en el parámetro error (si el procesador no existe, si este ya contiene un proceso con el mismo id o no se puede colocar en el procesador) 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classCluster_a622839c3b8dc923dc36f6026f35db269}\label{classCluster_a622839c3b8dc923dc36f6026f35db269}} 
+\index{Cluster@{Cluster}!compactar\_memoria@{compactar\_memoria}}
+\index{compactar\_memoria@{compactar\_memoria}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{compactar\_memoria()}{compactar\_memoria()}}
+{\footnotesize\ttfamily void Cluster\+::compactar\+\_\+memoria (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Compacta la memoria de los procesadores del parámetro implícito. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Todos los procesos de los procesadores se mueven al principio de su memoria, sin solaparse, sin dejar huecos y respetando el orden inicial 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classCluster_a993235c1e3da5a4b817483760aae2466}\label{classCluster_a993235c1e3da5a4b817483760aae2466}} 
+\index{Cluster@{Cluster}!compactar\_memoria\_procesador@{compactar\_memoria\_procesador}}
+\index{compactar\_memoria\_procesador@{compactar\_memoria\_procesador}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{compactar\_memoria\_procesador()}{compactar\_memoria\_procesador()}}
+{\footnotesize\ttfamily bool Cluster\+::compactar\+\_\+memoria\+\_\+procesador (\begin{DoxyParamCaption}\item[{string}]{id\+\_\+procesador,  }\item[{string \&}]{error }\end{DoxyParamCaption})}
+
+
+
+Compacta la memoria de un procesador procesador específico. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Todos los procesos del procesador cuyo id es indicado por parámetro se mueven al principio de su memoria, sin solaparse, sin dejar huecos y respetando el orden inicial La función devuelve \textquotesingle{}true\textquotesingle{} si no ha habido ningún error, en caso contrario devuelve \textquotesingle{}false\textquotesingle{} y el mensaje de error contenido en el parámetro error (si el procesador no existe) 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classCluster_acda60136939e262861f9b0df9bd08a46}\label{classCluster_acda60136939e262861f9b0df9bd08a46}} 
+\index{Cluster@{Cluster}!eliminar\_proceso\_procesador@{eliminar\_proceso\_procesador}}
+\index{eliminar\_proceso\_procesador@{eliminar\_proceso\_procesador}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{eliminar\_proceso\_procesador()}{eliminar\_proceso\_procesador()}}
+{\footnotesize\ttfamily bool Cluster\+::eliminar\+\_\+proceso\+\_\+procesador (\begin{DoxyParamCaption}\item[{string}]{id\+\_\+procesador,  }\item[{string}]{id\+\_\+proceso,  }\item[{string \&}]{error }\end{DoxyParamCaption})}
+
+
+
+Elimina un proceso de un procesador específico. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El proceso se elimina del procesador cuyos id\textquotesingle{}s se indica por parámetro La función devuelve \textquotesingle{}true\textquotesingle{} si no ha habido ningún error, en caso contrario devuelve \textquotesingle{}false\textquotesingle{} y el mensaje de error contenido en el parámetro error (si el procesador no existe o el procesador no contiene el proceso) 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classCluster_ad6e93a4a1a6f2e9228b5e30962b4ac06}\label{classCluster_ad6e93a4a1a6f2e9228b5e30962b4ac06}} 
+\index{Cluster@{Cluster}!imprimir\_estructura@{imprimir\_estructura}}
+\index{imprimir\_estructura@{imprimir\_estructura}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{imprimir\_estructura()}{imprimir\_estructura()}}
+{\footnotesize\ttfamily void Cluster\+::imprimir\+\_\+estructura (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Escribe la estructura de procesadores del parámetro implícito. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Escribe la estructura de procesadores del parámetro implícito 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classCluster_adda529f0782b1d4b9d6b054b8f33d9a5}\label{classCluster_adda529f0782b1d4b9d6b054b8f33d9a5}} 
+\index{Cluster@{Cluster}!imprimir\_procesador@{imprimir\_procesador}}
+\index{imprimir\_procesador@{imprimir\_procesador}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{imprimir\_procesador()}{imprimir\_procesador()}}
+{\footnotesize\ttfamily bool Cluster\+::imprimir\+\_\+procesador (\begin{DoxyParamCaption}\item[{string}]{id\+\_\+procesador,  }\item[{string \&}]{error }\end{DoxyParamCaption}) const}
+
+
+
+Imprime en el canal de salida estándar los procesos de un procesador específico. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Estan escritos en el canal estándar de salida los procesos del procesador cuyo id es indicado por parámetro por orden creciente de posición de memoria, incluyendo la posicíon y el resto de datos de cada proceso La función devuelve \textquotesingle{}true\textquotesingle{} si no ha habido ningún error, en caso contrario devuelve \textquotesingle{}false\textquotesingle{} y el mensaje de error contenido en el parámetro error (si el procesador no existe) 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classCluster_afc3924fd1f4643746ec3757c7777d732}\label{classCluster_afc3924fd1f4643746ec3757c7777d732}} 
+\index{Cluster@{Cluster}!imprimir\_procesadores@{imprimir\_procesadores}}
+\index{imprimir\_procesadores@{imprimir\_procesadores}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{imprimir\_procesadores()}{imprimir\_procesadores()}}
+{\footnotesize\ttfamily void Cluster\+::imprimir\+\_\+procesadores (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Imprime en el canal de salida estándar los procesos de los procesadores del parámetro implícito. 
+
+\begin{DoxyPrecond}{Precondición}
+Los procesos y procesadores contenidos en el parámetro implícito tienen los datos a imprimir definidos 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Estan escritos en el canal estándar de salida los procesos de cada procesador(por orden creciente de id), por orden creciente de posición de memoria, incluyendo la posicíon y el resto de datos de cada proceso 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classCluster_a482d879edb37f72e49c13e9c3e6c4320}\label{classCluster_a482d879edb37f72e49c13e9c3e6c4320}} 
+\index{Cluster@{Cluster}!leer@{leer}}
+\index{leer@{leer}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{leer()}{leer()}}
+{\footnotesize\ttfamily void Cluster\+::leer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Lee los procesadores de un clúster y sus conexiones. 
+
+\begin{DoxyPrecond}{Precondición}
+El canal estándar de entrada contiene los procesadores, sus conexiones y la memoria de cada uno de ellos 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El parámetro implícito contiene el arbol binario de los procesadores leídos por el canal estándar de entrada 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classCluster_a22c1cf06b4ec6816716578c5d8a41643}\label{classCluster_a22c1cf06b4ec6816716578c5d8a41643}} 
+\index{Cluster@{Cluster}!modificar@{modificar}}
+\index{modificar@{modificar}!Cluster@{Cluster}}
+\doxysubsubsection{\texorpdfstring{modificar()}{modificar()}}
+{\footnotesize\ttfamily bool Cluster\+::modificar (\begin{DoxyParamCaption}\item[{string}]{id\+\_\+procesador,  }\item[{const \mbox{\hyperlink{classCluster}{Cluster}} \&}]{c,  }\item[{string \&}]{error }\end{DoxyParamCaption})}
+
+
+
+Modifica el árbol binario de procesadores. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El clúster pasado por parámetro se coloca en el procesador cuyo id se indica por parámetro, haciendo crecer así el parámetro implícito. La función devuelve \textquotesingle{}true\textquotesingle{} si no ha habido ningún error, en caso contrario devuelve \textquotesingle{}false\textquotesingle{} y el mensaje de error contenido en el parámetro error (si el procesador no existe, si tenia procesos en ejecución o procesadores auxiliares). 
+\end{DoxyPostcond}
+
+
+La documentación para esta clase fue generada a partir del siguiente fichero\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Cluster_8hh}{Cluster.\+hh}}\end{DoxyCompactItemize}

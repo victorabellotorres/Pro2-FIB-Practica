@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Práctica de PRO2. &#39;Simulación del rendimiento: Fichero Fuente AreaEspera.hh</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Práctica de PRO2. &#39;Simulación del rendimiento
+   &#160;<span id="projectnumber">version primavera 2023</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">AreaEspera.hh</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="AreaEspera_8hh.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef AREAESPERA_HH</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define AREAESPERA_HH</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Proceso_8hh.html">Proceso.hh</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Cluster_8hh.html">Cluster.hh</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef NO_DIAGRAM</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;queue&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classAreaEspera.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="classAreaEspera.html">AreaEspera</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// Constructores</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classAreaEspera.html#a7963aabeb210931495ccb51d8ec61449">   31</a></span>&#160;    <a class="code" href="classAreaEspera.html#a7963aabeb210931495ccb51d8ec61449">AreaEspera</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">// Modificadores</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classAreaEspera.html#aae894ea78e8fc4ac906dec7ceb0d8ca9">   40</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAreaEspera.html#aae894ea78e8fc4ac906dec7ceb0d8ca9">añadir_prioridad</a>(<span class="keywordtype">string</span> id_prioridad, <span class="keywordtype">string</span>&amp; error);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classAreaEspera.html#ae4be5917687bd5307444e697cc423e3d">   47</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAreaEspera.html#ae4be5917687bd5307444e697cc423e3d">eliminar_prioridad</a>(<span class="keywordtype">string</span> id_prioridad, <span class="keywordtype">string</span>&amp; error);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classAreaEspera.html#a744f92b9865d155e0bd8e0d904ad245e">   54</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAreaEspera.html#a744f92b9865d155e0bd8e0d904ad245e">añadir_proceso</a>(<span class="keywordtype">string</span> id_prioridad, <span class="keyword">const</span> <a class="code" href="classProceso.html">Proceso</a>&amp; p, <span class="keywordtype">string</span>&amp; error);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classAreaEspera.html#acac2782d3241c4d50b4818ba26d84f20">   62</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classAreaEspera.html#acac2782d3241c4d50b4818ba26d84f20">enviar_procesos_cluster</a>(<a class="code" href="classCluster.html">Cluster</a>&amp; c, <span class="keywordtype">int</span> n);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// Consultores</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">// Lectura y escritura</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classAreaEspera.html#a919ba40f9aaf54e2a9019f31b38b5572">   72</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classAreaEspera.html#a919ba40f9aaf54e2a9019f31b38b5572">leer</a>(<span class="keywordtype">int</span> n);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classAreaEspera.html#ae40c662411fe7eac23906993f7cc7d86">   80</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classAreaEspera.html#ae40c662411fe7eac23906993f7cc7d86">imprimir_prioridad</a>(<span class="keywordtype">string</span> id_prioridad, <span class="keywordtype">string</span>&amp; error) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classAreaEspera.html#aa561f9c8b15aaeb1ced1115e367cb6e0">   87</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classAreaEspera.html#aa561f9c8b15aaeb1ced1115e367cb6e0">imprimir</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aCluster_8hh_html"><div class="ttname"><a href="Cluster_8hh.html">Cluster.hh</a></div><div class="ttdoc">Especificación de la clase Cluster.</div></div>
+<div class="ttc" id="aProceso_8hh_html"><div class="ttname"><a href="Proceso_8hh.html">Proceso.hh</a></div><div class="ttdoc">Especificación de la clase Proceso.</div></div>
+<div class="ttc" id="aclassAreaEspera_html"><div class="ttname"><a href="classAreaEspera.html">AreaEspera</a></div><div class="ttdoc">Representa un área de espera de procesos.</div><div class="ttdef"><b>Definition:</b> AreaEspera.hh:23</div></div>
+<div class="ttc" id="aclassAreaEspera_html_a744f92b9865d155e0bd8e0d904ad245e"><div class="ttname"><a href="classAreaEspera.html#a744f92b9865d155e0bd8e0d904ad245e">AreaEspera::añadir_proceso</a></div><div class="ttdeci">bool añadir_proceso(string id_prioridad, const Proceso &amp;p, string &amp;error)</div><div class="ttdoc">Añade un proceso a una prioridad específica.</div></div>
+<div class="ttc" id="aclassAreaEspera_html_a7963aabeb210931495ccb51d8ec61449"><div class="ttname"><a href="classAreaEspera.html#a7963aabeb210931495ccb51d8ec61449">AreaEspera::AreaEspera</a></div><div class="ttdeci">AreaEspera()</div><div class="ttdoc">Constructora por defecto.</div></div>
+<div class="ttc" id="aclassAreaEspera_html_a919ba40f9aaf54e2a9019f31b38b5572"><div class="ttname"><a href="classAreaEspera.html#a919ba40f9aaf54e2a9019f31b38b5572">AreaEspera::leer</a></div><div class="ttdeci">void leer(int n)</div><div class="ttdoc">Lee un número n de prioridades.</div></div>
+<div class="ttc" id="aclassAreaEspera_html_aa561f9c8b15aaeb1ced1115e367cb6e0"><div class="ttname"><a href="classAreaEspera.html#aa561f9c8b15aaeb1ced1115e367cb6e0">AreaEspera::imprimir</a></div><div class="ttdeci">void imprimir() const</div><div class="ttdoc">Imprime en el canal estándar de salida los procesos pendientes de todas las priorirades.</div></div>
+<div class="ttc" id="aclassAreaEspera_html_aae894ea78e8fc4ac906dec7ceb0d8ca9"><div class="ttname"><a href="classAreaEspera.html#aae894ea78e8fc4ac906dec7ceb0d8ca9">AreaEspera::añadir_prioridad</a></div><div class="ttdeci">bool añadir_prioridad(string id_prioridad, string &amp;error)</div><div class="ttdoc">Añade una prioridad al parámetro implícito.</div></div>
+<div class="ttc" id="aclassAreaEspera_html_acac2782d3241c4d50b4818ba26d84f20"><div class="ttname"><a href="classAreaEspera.html#acac2782d3241c4d50b4818ba26d84f20">AreaEspera::enviar_procesos_cluster</a></div><div class="ttdeci">void enviar_procesos_cluster(Cluster &amp;c, int n)</div><div class="ttdoc">Se intentan colocar n procesos pendientes a un clúster por orden de prioridad.</div></div>
+<div class="ttc" id="aclassAreaEspera_html_ae40c662411fe7eac23906993f7cc7d86"><div class="ttname"><a href="classAreaEspera.html#ae40c662411fe7eac23906993f7cc7d86">AreaEspera::imprimir_prioridad</a></div><div class="ttdeci">bool imprimir_prioridad(string id_prioridad, string &amp;error) const</div><div class="ttdoc">Imprime en el canal estándar de salida los procesos pendientes de una prioridad.</div></div>
+<div class="ttc" id="aclassAreaEspera_html_ae4be5917687bd5307444e697cc423e3d"><div class="ttname"><a href="classAreaEspera.html#ae4be5917687bd5307444e697cc423e3d">AreaEspera::eliminar_prioridad</a></div><div class="ttdeci">bool eliminar_prioridad(string id_prioridad, string &amp;error)</div><div class="ttdoc">Elimina una prioridad del parámetro implícito.</div></div>
+<div class="ttc" id="aclassCluster_html"><div class="ttname"><a href="classCluster.html">Cluster</a></div><div class="ttdoc">Representa un sistema de procesadores distribuidos en forma de arbol binario.</div><div class="ttdef"><b>Definition:</b> Cluster.hh:23</div></div>
+<div class="ttc" id="aclassProceso_html"><div class="ttname"><a href="classProceso.html">Proceso</a></div><div class="ttdoc">Representa un proceso.</div><div class="ttdef"><b>Definition:</b> Proceso.hh:19</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

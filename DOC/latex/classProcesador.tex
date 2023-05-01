@@ -1,0 +1,264 @@
+\hypertarget{classProcesador}{}\doxysection{Referencia de la Clase Procesador}
+\label{classProcesador}\index{Procesador@{Procesador}}
+
+
+Representa un procesador.  
+
+
+
+
+{\ttfamily \#include $<$Procesador.\+hh$>$}
+
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classProcesador_aacfa2a06c7d44636ecfb0338bebbfa8b}{Procesador}} ()
+\begin{DoxyCompactList}\small\item\em Constructora por defecto. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classProcesador_a4752b2c33332de5ce65d87d2425536fc}{Procesador}} (string \mbox{\hyperlink{classProcesador_a1afe50cb14d2f209103f9dd35ff19b91}{id}}, int memoria)
+\begin{DoxyCompactList}\small\item\em Constructora con valores concretos. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classProcesador_a54d6880ab06153b25b8a5cd67e7b2eeb}{añadir\+\_\+proceso}} (const \mbox{\hyperlink{classProceso}{Proceso}} \&p)
+\begin{DoxyCompactList}\small\item\em Añade un proceso al parámetro implícito. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classProcesador_a5c0d9f2d05ace9295df6031370f6f33e}{eliminar\+\_\+proceso}} (const \mbox{\hyperlink{classProceso}{Proceso}} \&p)
+\begin{DoxyCompactList}\small\item\em Elimina un proceso del parámetro implícito. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProcesador_a91055a2cc9c3129051a762a9eb2a1f19}{avanzar\+\_\+tiempo}} (int t)
+\begin{DoxyCompactList}\small\item\em Avanza el tiempo de todos los procesos que estan siendo ejecutados. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProcesador_a06b0b1c913b359a1bc6c920120dd0e66}{compactar\+\_\+memoria}} ()
+\begin{DoxyCompactList}\small\item\em Compacta la memoria del parámetro implícito. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classProcesador_a1afe50cb14d2f209103f9dd35ff19b91}{id}} () const
+\begin{DoxyCompactList}\small\item\em Consultora del identificador. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classProcesador_a0e22a37e824ea954241a202ad7e1a043}{memoria\+\_\+disponible}} () const
+\begin{DoxyCompactList}\small\item\em Consultora de la memoria disponible. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classProcesador_a44be11aec1a5f0f9372c5c7e08663aa1}{contiene\+\_\+proceso}} () const
+\begin{DoxyCompactList}\small\item\em Consultora de la existencia de procesos en el parámetro implícito. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classProcesador_adb82d94bb473c7e46688f7666539f40e}{existe\+\_\+proceso}} (const \mbox{\hyperlink{classProceso}{Proceso}} \&p) const
+\begin{DoxyCompactList}\small\item\em Consultora de la existencia de un proceso específico. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classProcesador_a7b4feacbd9a7adfe3dadf8f99a58b0f0}{hueco\+\_\+mas\+\_\+ajustado}} (const \mbox{\hyperlink{classProceso}{Proceso}} \&p) const
+\begin{DoxyCompactList}\small\item\em Consultora de cuan ajustado es el espacio de memoria respecto un proceso. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProcesador_ac104960814ba918ba113ed9d58bca271}{leer}} ()
+\begin{DoxyCompactList}\small\item\em Lee un procesador. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProcesador_a982d63719a2883f9e2a5191301441897}{imprimir}} () const
+\begin{DoxyCompactList}\small\item\em Imprime en el canal de salida estándar los procesos del parámetro implícito. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Representa un procesador. 
+
+Permite ejecutar procesos y gestionar su propia memoria 
+
+\doxysubsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{classProcesador_aacfa2a06c7d44636ecfb0338bebbfa8b}\label{classProcesador_aacfa2a06c7d44636ecfb0338bebbfa8b}} 
+\index{Procesador@{Procesador}!Procesador@{Procesador}}
+\index{Procesador@{Procesador}!Procesador@{Procesador}}
+\doxysubsubsection{\texorpdfstring{Procesador()}{Procesador()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Procesador\+::\+Procesador (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructora por defecto. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El resultado es un procesador con un id y una memoria no inicializadas 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProcesador_a4752b2c33332de5ce65d87d2425536fc}\label{classProcesador_a4752b2c33332de5ce65d87d2425536fc}} 
+\index{Procesador@{Procesador}!Procesador@{Procesador}}
+\index{Procesador@{Procesador}!Procesador@{Procesador}}
+\doxysubsubsection{\texorpdfstring{Procesador()}{Procesador()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Procesador\+::\+Procesador (\begin{DoxyParamCaption}\item[{string}]{id,  }\item[{int}]{memoria }\end{DoxyParamCaption})}
+
+
+
+Constructora con valores concretos. 
+
+\begin{DoxyPrecond}{Precondición}
+id solo contiene letras y numeros, y el tamaño de la memoria 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El resultado es un procesador con el id y la memoria pasados por parámetro 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classProcesador_a91055a2cc9c3129051a762a9eb2a1f19}\label{classProcesador_a91055a2cc9c3129051a762a9eb2a1f19}} 
+\index{Procesador@{Procesador}!avanzar\_tiempo@{avanzar\_tiempo}}
+\index{avanzar\_tiempo@{avanzar\_tiempo}!Procesador@{Procesador}}
+\doxysubsubsection{\texorpdfstring{avanzar\_tiempo()}{avanzar\_tiempo()}}
+{\footnotesize\ttfamily void Procesador\+::avanzar\+\_\+tiempo (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+
+
+Avanza el tiempo de todos los procesos que estan siendo ejecutados. 
+
+\begin{DoxyPrecond}{Precondición}
+t $>$= 0 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El tiempo de ejecución de todos los procesos del parámetro implícito progresa t unidades de tiempo. Se eliminan todos los procesos que hayan terminado en el interválo de tiempo t 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProcesador_a54d6880ab06153b25b8a5cd67e7b2eeb}\label{classProcesador_a54d6880ab06153b25b8a5cd67e7b2eeb}} 
+\index{Procesador@{Procesador}!añadir\_proceso@{añadir\_proceso}}
+\index{añadir\_proceso@{añadir\_proceso}!Procesador@{Procesador}}
+\doxysubsubsection{\texorpdfstring{añadir\_proceso()}{añadir\_proceso()}}
+{\footnotesize\ttfamily bool Procesador\+::añadir\+\_\+proceso (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classProceso}{Proceso}} \&}]{p }\end{DoxyParamCaption})}
+
+
+
+Añade un proceso al parámetro implícito. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El proceso p pasa a ejecutarse y ocupar la memoria del parámetro implícito (el proceso se coloca en la posición más pequeña que deje el hueco más ajustado) La función devuelve \textquotesingle{}true\textquotesingle{} si no ha habido ningún error, en caso contrario devuelve \textquotesingle{}false\textquotesingle{} 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProcesador_a06b0b1c913b359a1bc6c920120dd0e66}\label{classProcesador_a06b0b1c913b359a1bc6c920120dd0e66}} 
+\index{Procesador@{Procesador}!compactar\_memoria@{compactar\_memoria}}
+\index{compactar\_memoria@{compactar\_memoria}!Procesador@{Procesador}}
+\doxysubsubsection{\texorpdfstring{compactar\_memoria()}{compactar\_memoria()}}
+{\footnotesize\ttfamily void Procesador\+::compactar\+\_\+memoria (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Compacta la memoria del parámetro implícito. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Todos los procesos del parámetro implícito se mueven al principio de la memoria, sin solaparse, sin dejar huecos y respetando el orden inicial 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProcesador_a44be11aec1a5f0f9372c5c7e08663aa1}\label{classProcesador_a44be11aec1a5f0f9372c5c7e08663aa1}} 
+\index{Procesador@{Procesador}!contiene\_proceso@{contiene\_proceso}}
+\index{contiene\_proceso@{contiene\_proceso}!Procesador@{Procesador}}
+\doxysubsubsection{\texorpdfstring{contiene\_proceso()}{contiene\_proceso()}}
+{\footnotesize\ttfamily bool Procesador\+::contiene\+\_\+proceso (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Consultora de la existencia de procesos en el parámetro implícito. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve \textquotesingle{}true\textquotesingle{} si el parámetro implícito contiene algún proceso, en caso contrario devuelve \textquotesingle{}false\textquotesingle{} 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProcesador_a5c0d9f2d05ace9295df6031370f6f33e}\label{classProcesador_a5c0d9f2d05ace9295df6031370f6f33e}} 
+\index{Procesador@{Procesador}!eliminar\_proceso@{eliminar\_proceso}}
+\index{eliminar\_proceso@{eliminar\_proceso}!Procesador@{Procesador}}
+\doxysubsubsection{\texorpdfstring{eliminar\_proceso()}{eliminar\_proceso()}}
+{\footnotesize\ttfamily bool Procesador\+::eliminar\+\_\+proceso (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classProceso}{Proceso}} \&}]{p }\end{DoxyParamCaption})}
+
+
+
+Elimina un proceso del parámetro implícito. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El proceso p se elimina del parámetro implícito, dejando libre la memoria usada por este proceso La función devuelve \textquotesingle{}true\textquotesingle{} si no ha habido ningún error, en caso contrario devuelve \textquotesingle{}false\textquotesingle{} 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProcesador_adb82d94bb473c7e46688f7666539f40e}\label{classProcesador_adb82d94bb473c7e46688f7666539f40e}} 
+\index{Procesador@{Procesador}!existe\_proceso@{existe\_proceso}}
+\index{existe\_proceso@{existe\_proceso}!Procesador@{Procesador}}
+\doxysubsubsection{\texorpdfstring{existe\_proceso()}{existe\_proceso()}}
+{\footnotesize\ttfamily bool Procesador\+::existe\+\_\+proceso (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classProceso}{Proceso}} \&}]{p }\end{DoxyParamCaption}) const}
+
+
+
+Consultora de la existencia de un proceso específico. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve \textquotesingle{}true\textquotesingle{} si el parámetro implícito contiene el proceso p pasado por parámetro, en caso contrario devuelve \textquotesingle{}false\textquotesingle{} 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProcesador_a7b4feacbd9a7adfe3dadf8f99a58b0f0}\label{classProcesador_a7b4feacbd9a7adfe3dadf8f99a58b0f0}} 
+\index{Procesador@{Procesador}!hueco\_mas\_ajustado@{hueco\_mas\_ajustado}}
+\index{hueco\_mas\_ajustado@{hueco\_mas\_ajustado}!Procesador@{Procesador}}
+\doxysubsubsection{\texorpdfstring{hueco\_mas\_ajustado()}{hueco\_mas\_ajustado()}}
+{\footnotesize\ttfamily int Procesador\+::hueco\+\_\+mas\+\_\+ajustado (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classProceso}{Proceso}} \&}]{p }\end{DoxyParamCaption}) const}
+
+
+
+Consultora de cuan ajustado es el espacio de memoria respecto un proceso. 
+
+\begin{DoxyPrecond}{Precondición}
+p tiene un tamaño $>$ 0 y el parámetro implícito tiene la memoria inicializada 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve el tamaño que tiene el hueco de memoria más pequeño que es capaz de contener el proceso p pasado por parámetro Si no existe tal hueco, la función devuelve -\/1 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProcesador_a1afe50cb14d2f209103f9dd35ff19b91}\label{classProcesador_a1afe50cb14d2f209103f9dd35ff19b91}} 
+\index{Procesador@{Procesador}!id@{id}}
+\index{id@{id}!Procesador@{Procesador}}
+\doxysubsubsection{\texorpdfstring{id()}{id()}}
+{\footnotesize\ttfamily string Procesador\+::id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Consultora del identificador. 
+
+\begin{DoxyPrecond}{Precondición}
+El parámetro implícito tiene un id inicializado 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve el identificador del parámetro implícito 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProcesador_a982d63719a2883f9e2a5191301441897}\label{classProcesador_a982d63719a2883f9e2a5191301441897}} 
+\index{Procesador@{Procesador}!imprimir@{imprimir}}
+\index{imprimir@{imprimir}!Procesador@{Procesador}}
+\doxysubsubsection{\texorpdfstring{imprimir()}{imprimir()}}
+{\footnotesize\ttfamily void Procesador\+::imprimir (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Imprime en el canal de salida estándar los procesos del parámetro implícito. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Estan escritos en el canal estándar de salida los procesos del parámetro implícito por orden creciente de posición de memoria, incluyendo la posicíon y el resto de datos de cada proceso. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProcesador_ac104960814ba918ba113ed9d58bca271}\label{classProcesador_ac104960814ba918ba113ed9d58bca271}} 
+\index{Procesador@{Procesador}!leer@{leer}}
+\index{leer@{leer}!Procesador@{Procesador}}
+\doxysubsubsection{\texorpdfstring{leer()}{leer()}}
+{\footnotesize\ttfamily void Procesador\+::leer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Lee un procesador. 
+
+\begin{DoxyPrecond}{Precondición}
+El canal estándar de entrada contiene el id y el tamaño de la memoria de un procesador 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El parámetro implícito pasa a tener el identificador y el tamaño leídos por el canal de entrada 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProcesador_a0e22a37e824ea954241a202ad7e1a043}\label{classProcesador_a0e22a37e824ea954241a202ad7e1a043}} 
+\index{Procesador@{Procesador}!memoria\_disponible@{memoria\_disponible}}
+\index{memoria\_disponible@{memoria\_disponible}!Procesador@{Procesador}}
+\doxysubsubsection{\texorpdfstring{memoria\_disponible()}{memoria\_disponible()}}
+{\footnotesize\ttfamily int Procesador\+::memoria\+\_\+disponible (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Consultora de la memoria disponible. 
+
+\begin{DoxyPrecond}{Precondición}
+El parámetro implícito tiene la memoria inicializada 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Devuelve la memoria disponible (que no esta ocupada por ningún proceso) del parámetro implícito 
+\end{DoxyPostcond}
+
+
+La documentación para esta clase fue generada a partir del siguiente fichero\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Procesador_8hh}{Procesador.\+hh}}\end{DoxyCompactItemize}

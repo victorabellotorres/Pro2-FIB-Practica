@@ -1,0 +1,156 @@
+\hypertarget{classProceso}{}\doxysection{Referencia de la Clase Proceso}
+\label{classProceso}\index{Proceso@{Proceso}}
+
+
+Representa un proceso.  
+
+
+
+
+{\ttfamily \#include $<$Proceso.\+hh$>$}
+
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classProceso_a632f57d6ec48e76c80fbeb7734c1148c}{Proceso}} ()
+\begin{DoxyCompactList}\small\item\em Constructora por defecto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProceso_aacfa317b627623ffde171bd0e1419ac8}{avanzar\+\_\+tiempo}} (int t)
+\begin{DoxyCompactList}\small\item\em Modificadora del tiempo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classProceso_ab843eeed1889979c6cfc790a54067b6a}{id}} () const
+\begin{DoxyCompactList}\small\item\em Consultora del identificador. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classProceso_a2c2f063c99b311196b4eaeac025a4685}{tamaño}} () const
+\begin{DoxyCompactList}\small\item\em Consultora del tamaño. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classProceso_a8717ae7b6e51bbd0c19ce714f113bc6b}{tiempo}} () const
+\begin{DoxyCompactList}\small\item\em Consultora del tiempo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProceso_ad133f53bba77755f779ef63b6e529cdb}{leer}} ()
+\begin{DoxyCompactList}\small\item\em Lee los datos de un proceso. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProceso_a1c038ea4cc370e4bbc7b8d309d5da708}{escribir}} () const
+\begin{DoxyCompactList}\small\item\em Escribe los datos de un proceso. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Representa un proceso. 
+
+Permite consultar datos, imprimirlos en el canal de salida y avanzar su tiempo de ejecución 
+
+\doxysubsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{classProceso_a632f57d6ec48e76c80fbeb7734c1148c}\label{classProceso_a632f57d6ec48e76c80fbeb7734c1148c}} 
+\index{Proceso@{Proceso}!Proceso@{Proceso}}
+\index{Proceso@{Proceso}!Proceso@{Proceso}}
+\doxysubsubsection{\texorpdfstring{Proceso()}{Proceso()}}
+{\footnotesize\ttfamily Proceso\+::\+Proceso (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructora por defecto. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El resultado es un proceso con un id, tamaño y tiempo no inicializados 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classProceso_aacfa317b627623ffde171bd0e1419ac8}\label{classProceso_aacfa317b627623ffde171bd0e1419ac8}} 
+\index{Proceso@{Proceso}!avanzar\_tiempo@{avanzar\_tiempo}}
+\index{avanzar\_tiempo@{avanzar\_tiempo}!Proceso@{Proceso}}
+\doxysubsubsection{\texorpdfstring{avanzar\_tiempo()}{avanzar\_tiempo()}}
+{\footnotesize\ttfamily void Proceso\+::avanzar\+\_\+tiempo (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+
+
+Modificadora del tiempo. 
+
+\begin{DoxyPrecond}{Precondición}
+El parámetro implícito tiene el tiempo inicializado y t $>$= 0 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El tiempo de ejecución del parámetro implícito progresa t unidades de tiempo. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProceso_a1c038ea4cc370e4bbc7b8d309d5da708}\label{classProceso_a1c038ea4cc370e4bbc7b8d309d5da708}} 
+\index{Proceso@{Proceso}!escribir@{escribir}}
+\index{escribir@{escribir}!Proceso@{Proceso}}
+\doxysubsubsection{\texorpdfstring{escribir()}{escribir()}}
+{\footnotesize\ttfamily void Proceso\+::escribir (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Escribe los datos de un proceso. 
+
+\begin{DoxyPrecond}{Precondición}
+El parámetro implícito tiene el id, tamaño y tiempo inicializados 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Esta escrito en el canal estándar de salida el id, tamaño y tiempo del parámetro implícito 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProceso_ab843eeed1889979c6cfc790a54067b6a}\label{classProceso_ab843eeed1889979c6cfc790a54067b6a}} 
+\index{Proceso@{Proceso}!id@{id}}
+\index{id@{id}!Proceso@{Proceso}}
+\doxysubsubsection{\texorpdfstring{id()}{id()}}
+{\footnotesize\ttfamily int Proceso\+::id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Consultora del identificador. 
+
+\begin{DoxyPrecond}{Precondición}
+El id del parámetro implícito esta inicializado 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+La función devuelve el id del parámetro implícito 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProceso_ad133f53bba77755f779ef63b6e529cdb}\label{classProceso_ad133f53bba77755f779ef63b6e529cdb}} 
+\index{Proceso@{Proceso}!leer@{leer}}
+\index{leer@{leer}!Proceso@{Proceso}}
+\doxysubsubsection{\texorpdfstring{leer()}{leer()}}
+{\footnotesize\ttfamily void Proceso\+::leer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Lee los datos de un proceso. 
+
+\begin{DoxyPrecond}{Precondición}
+El canal estándar de entrada contiene el id, tamaño y tiempo de un proceso 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El id, tamaño y tiempo del parámetro implícito pasan a tener el valor leido en el canal estándar de entrada 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProceso_a2c2f063c99b311196b4eaeac025a4685}\label{classProceso_a2c2f063c99b311196b4eaeac025a4685}} 
+\index{Proceso@{Proceso}!tamaño@{tamaño}}
+\index{tamaño@{tamaño}!Proceso@{Proceso}}
+\doxysubsubsection{\texorpdfstring{tamaño()}{tamaño()}}
+{\footnotesize\ttfamily int Proceso\+::tamaño (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Consultora del tamaño. 
+
+\begin{DoxyPrecond}{Precondición}
+El tamaño del parámetro implícito esta inicializado 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+La función devuelve el tamaño del parámetro implícito 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classProceso_a8717ae7b6e51bbd0c19ce714f113bc6b}\label{classProceso_a8717ae7b6e51bbd0c19ce714f113bc6b}} 
+\index{Proceso@{Proceso}!tiempo@{tiempo}}
+\index{tiempo@{tiempo}!Proceso@{Proceso}}
+\doxysubsubsection{\texorpdfstring{tiempo()}{tiempo()}}
+{\footnotesize\ttfamily int Proceso\+::tiempo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Consultora del tiempo. 
+
+\begin{DoxyPrecond}{Precondición}
+El tiempo del parámetro implícito esta inicializado 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+La función devuelve el tiempo del parámero implícito 
+\end{DoxyPostcond}
+
+
+La documentación para esta clase fue generada a partir del siguiente fichero\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Proceso_8hh}{Proceso.\+hh}}\end{DoxyCompactItemize}

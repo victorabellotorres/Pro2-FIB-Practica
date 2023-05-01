@@ -1,0 +1,174 @@
+\hypertarget{classAreaEspera}{}\doxysection{Referencia de la Clase Area\+Espera}
+\label{classAreaEspera}\index{AreaEspera@{AreaEspera}}
+
+
+Representa un área de espera de procesos.  
+
+
+
+
+{\ttfamily \#include $<$Area\+Espera.\+hh$>$}
+
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAreaEspera_a7963aabeb210931495ccb51d8ec61449}{Area\+Espera}} ()
+\begin{DoxyCompactList}\small\item\em Constructora por defecto. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAreaEspera_aae894ea78e8fc4ac906dec7ceb0d8ca9}{añadir\+\_\+prioridad}} (string id\+\_\+prioridad, string \&error)
+\begin{DoxyCompactList}\small\item\em Añade una prioridad al parámetro implícito. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAreaEspera_ae4be5917687bd5307444e697cc423e3d}{eliminar\+\_\+prioridad}} (string id\+\_\+prioridad, string \&error)
+\begin{DoxyCompactList}\small\item\em Elimina una prioridad del parámetro implícito. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAreaEspera_a744f92b9865d155e0bd8e0d904ad245e}{añadir\+\_\+proceso}} (string id\+\_\+prioridad, const \mbox{\hyperlink{classProceso}{Proceso}} \&p, string \&error)
+\begin{DoxyCompactList}\small\item\em Añade un proceso a una prioridad específica. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAreaEspera_acac2782d3241c4d50b4818ba26d84f20}{enviar\+\_\+procesos\+\_\+cluster}} (\mbox{\hyperlink{classCluster}{Cluster}} \&c, int n)
+\begin{DoxyCompactList}\small\item\em Se intentan colocar n procesos pendientes a un clúster por orden de prioridad. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAreaEspera_a919ba40f9aaf54e2a9019f31b38b5572}{leer}} (int n)
+\begin{DoxyCompactList}\small\item\em Lee un número n de prioridades. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classAreaEspera_ae40c662411fe7eac23906993f7cc7d86}{imprimir\+\_\+prioridad}} (string id\+\_\+prioridad, string \&error) const
+\begin{DoxyCompactList}\small\item\em Imprime en el canal estándar de salida los procesos pendientes de una prioridad. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAreaEspera_aa561f9c8b15aaeb1ced1115e367cb6e0}{imprimir}} () const
+\begin{DoxyCompactList}\small\item\em Imprime en el canal estándar de salida los procesos pendientes de todas las priorirades. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Representa un área de espera de procesos. 
+
+Permite almacenar y gestionar procesos pendientes de distintas prioridades y enviar procesos a un clúster. 
+
+\doxysubsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{classAreaEspera_a7963aabeb210931495ccb51d8ec61449}\label{classAreaEspera_a7963aabeb210931495ccb51d8ec61449}} 
+\index{AreaEspera@{AreaEspera}!AreaEspera@{AreaEspera}}
+\index{AreaEspera@{AreaEspera}!AreaEspera@{AreaEspera}}
+\doxysubsubsection{\texorpdfstring{AreaEspera()}{AreaEspera()}}
+{\footnotesize\ttfamily Area\+Espera\+::\+Area\+Espera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructora por defecto. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El resultado es un área de espera sin ninguna prioridad ni proceso 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classAreaEspera_aae894ea78e8fc4ac906dec7ceb0d8ca9}\label{classAreaEspera_aae894ea78e8fc4ac906dec7ceb0d8ca9}} 
+\index{AreaEspera@{AreaEspera}!añadir\_prioridad@{añadir\_prioridad}}
+\index{añadir\_prioridad@{añadir\_prioridad}!AreaEspera@{AreaEspera}}
+\doxysubsubsection{\texorpdfstring{añadir\_prioridad()}{añadir\_prioridad()}}
+{\footnotesize\ttfamily bool Area\+Espera\+::añadir\+\_\+prioridad (\begin{DoxyParamCaption}\item[{string}]{id\+\_\+prioridad,  }\item[{string \&}]{error }\end{DoxyParamCaption})}
+
+
+
+Añade una prioridad al parámetro implícito. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Se añade al parámetro implícito una prioridad vacía que tiene el id pasado por parámetro La función devuelve \textquotesingle{}true\textquotesingle{} si no ha habido ningún error, en caso contrario devuelve \textquotesingle{}false\textquotesingle{} y el mensaje de error contenido en el parámetro error (si ya existe una prioridad con el mismo id) 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classAreaEspera_a744f92b9865d155e0bd8e0d904ad245e}\label{classAreaEspera_a744f92b9865d155e0bd8e0d904ad245e}} 
+\index{AreaEspera@{AreaEspera}!añadir\_proceso@{añadir\_proceso}}
+\index{añadir\_proceso@{añadir\_proceso}!AreaEspera@{AreaEspera}}
+\doxysubsubsection{\texorpdfstring{añadir\_proceso()}{añadir\_proceso()}}
+{\footnotesize\ttfamily bool Area\+Espera\+::añadir\+\_\+proceso (\begin{DoxyParamCaption}\item[{string}]{id\+\_\+prioridad,  }\item[{const \mbox{\hyperlink{classProceso}{Proceso}} \&}]{p,  }\item[{string \&}]{error }\end{DoxyParamCaption})}
+
+
+
+Añade un proceso a una prioridad específica. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Se añadre el proceso p pasado por parámetro de la prioridad cuyo id se indica por parámetro. La función devuelve \textquotesingle{}true\textquotesingle{} si no ha habido ningún error, en caso contrario devuelve \textquotesingle{}false\textquotesingle{} y el mensaje de error contenido en el parámetro error (si no existe una prioridad con el id indicado o si ya existe este proceso en la prioridad) 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classAreaEspera_ae4be5917687bd5307444e697cc423e3d}\label{classAreaEspera_ae4be5917687bd5307444e697cc423e3d}} 
+\index{AreaEspera@{AreaEspera}!eliminar\_prioridad@{eliminar\_prioridad}}
+\index{eliminar\_prioridad@{eliminar\_prioridad}!AreaEspera@{AreaEspera}}
+\doxysubsubsection{\texorpdfstring{eliminar\_prioridad()}{eliminar\_prioridad()}}
+{\footnotesize\ttfamily bool Area\+Espera\+::eliminar\+\_\+prioridad (\begin{DoxyParamCaption}\item[{string}]{id\+\_\+prioridad,  }\item[{string \&}]{error }\end{DoxyParamCaption})}
+
+
+
+Elimina una prioridad del parámetro implícito. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Se elimina del parámetro implícito la prioridad que tenga el id pasado por parámetro La función devuelve \textquotesingle{}true\textquotesingle{} si no ha habido ningún error, en caso contrario devuelve \textquotesingle{}false\textquotesingle{} y el mensaje de error contenido en el parámetro error (si no existe una prioridad con el mismo id o si esta tiene procesos pendientes) 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classAreaEspera_acac2782d3241c4d50b4818ba26d84f20}\label{classAreaEspera_acac2782d3241c4d50b4818ba26d84f20}} 
+\index{AreaEspera@{AreaEspera}!enviar\_procesos\_cluster@{enviar\_procesos\_cluster}}
+\index{enviar\_procesos\_cluster@{enviar\_procesos\_cluster}!AreaEspera@{AreaEspera}}
+\doxysubsubsection{\texorpdfstring{enviar\_procesos\_cluster()}{enviar\_procesos\_cluster()}}
+{\footnotesize\ttfamily void Area\+Espera\+::enviar\+\_\+procesos\+\_\+cluster (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCluster}{Cluster}} \&}]{c,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Se intentan colocar n procesos pendientes a un clúster por orden de prioridad. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Se han intentado enviar n procesos pendientes del parámetro implícito al clúster pasado por parámetro, enviando primero por orden de prioridad, y dentro de la misma prioridad primero los procesos más antiguos Se continuan enviando procesos pendiantes hasta se hayan colocado n procesos, o se hayan acabado los procesos, o hasta que todos los procesos pendientes se hayan intentado colocar sin éxito (los procesos rechazados vuelven al área como si fueran nuevos) También se actualizan los contadores de procesos rechazados de la prioridad 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classAreaEspera_aa561f9c8b15aaeb1ced1115e367cb6e0}\label{classAreaEspera_aa561f9c8b15aaeb1ced1115e367cb6e0}} 
+\index{AreaEspera@{AreaEspera}!imprimir@{imprimir}}
+\index{imprimir@{imprimir}!AreaEspera@{AreaEspera}}
+\doxysubsubsection{\texorpdfstring{imprimir()}{imprimir()}}
+{\footnotesize\ttfamily void Area\+Espera\+::imprimir (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Imprime en el canal estándar de salida los procesos pendientes de todas las priorirades. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Estan escritos en el canal estándar de salida los procesos por orden decreciente de antigüedad de todas las prioridades, por orden creciente de prioridad. Además, se escribe el número de procesos de cada prioridad colocados y rechazados en el clúster por la operación \textquotesingle{}envier\+\_\+procesos\+\_\+cluster\textquotesingle{} 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classAreaEspera_ae40c662411fe7eac23906993f7cc7d86}\label{classAreaEspera_ae40c662411fe7eac23906993f7cc7d86}} 
+\index{AreaEspera@{AreaEspera}!imprimir\_prioridad@{imprimir\_prioridad}}
+\index{imprimir\_prioridad@{imprimir\_prioridad}!AreaEspera@{AreaEspera}}
+\doxysubsubsection{\texorpdfstring{imprimir\_prioridad()}{imprimir\_prioridad()}}
+{\footnotesize\ttfamily bool Area\+Espera\+::imprimir\+\_\+prioridad (\begin{DoxyParamCaption}\item[{string}]{id\+\_\+prioridad,  }\item[{string \&}]{error }\end{DoxyParamCaption}) const}
+
+
+
+Imprime en el canal estándar de salida los procesos pendientes de una prioridad. 
+
+\begin{DoxyPrecond}{Precondición}
+{\itshape cierto} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Estan escritos en el canal estándar de salida los procesos pendientes de una prioridad por orden decreciente de antigüedad Además de el número de procesos de la prioridad colocados y rechazados en el clúster por la operación \textquotesingle{}envier\+\_\+procesos\+\_\+cluster\textquotesingle{} La función devuelve \textquotesingle{}true\textquotesingle{} si no ha habido ningún error, en caso contrario devuelve \textquotesingle{}false\textquotesingle{} y el mensaje de error contenido en el parámetro error (si no existe una prioridad con el id indicado) 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classAreaEspera_a919ba40f9aaf54e2a9019f31b38b5572}\label{classAreaEspera_a919ba40f9aaf54e2a9019f31b38b5572}} 
+\index{AreaEspera@{AreaEspera}!leer@{leer}}
+\index{leer@{leer}!AreaEspera@{AreaEspera}}
+\doxysubsubsection{\texorpdfstring{leer()}{leer()}}
+{\footnotesize\ttfamily void Area\+Espera\+::leer (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Lee un número n de prioridades. 
+
+\begin{DoxyPrecond}{Precondición}
+El canal estándar de entrada contiene los identificadores de n prioridades 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El parámetro implícito contiene n prioridades cuyos identificadores han sido leidos por el canal estándar de entrada 
+\end{DoxyPostcond}
+
+
+La documentación para esta clase fue generada a partir del siguiente fichero\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{AreaEspera_8hh}{Area\+Espera.\+hh}}\end{DoxyCompactItemize}
