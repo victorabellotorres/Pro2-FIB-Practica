@@ -72,27 +72,24 @@ bool Procesador::eliminar_proceso(int id) {
         hueco += siguiente_hueco;
     }
 
-
     int anterior_hueco = pos;
+    int pos_anterior_hueco = 0;
     if (it_pos != pos_proceso.begin()) {
         --it_pos;
-        anterior_hueco = pos - (it_pos->first + it_pos->second.consultar_tamaño());
+        pos_anterior_hueco =  it_pos->first + it_pos->second.consultar_tamaño();
+        anterior_hueco = pos - pos_anterior_hueco;
     }
 
     if (anterior_hueco > 0) {
         map<int,set<int>>::iterator it_hueco = hueco_pos.find(anterior_hueco);
-
         //se elimina la posicion donde esta el anterior_hueco
-        it_hueco->second.erase(pos+hueco);
-
+        it_hueco->second.erase(pos_anterior_hueco);
         //se elimina el hueco, si no existen mas huecos de ese tamaño
         if (it_hueco->second.empty()) hueco_pos.erase(it_hueco);
-
         //se actualiza la posicion
-        pos = (it_pos->first + it_pos->second.consultar_tamaño());
+        pos = pos_anterior_hueco;
         hueco += anterior_hueco;
     }
-
     hueco_pos[hueco].insert(pos);
 
     return true;
