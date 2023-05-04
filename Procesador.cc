@@ -31,14 +31,13 @@ bool Procesador::añadir_proceso(const Proceso& p) {
 
     // se coloca el proceso en la posicion
     int pos = *(it->second.begin());
- 
     pos_proceso[pos] = p;
     id_pos[p.consultar_id()] = pos;
     it->second.erase(it->second.begin());
 
     int hueco = it->first;
     // si el tamaño del proceso es mas pequeño que el hueco, se actualizan los huecos 
-    if (it->first != p.consultar_tamaño()) hueco_pos[hueco - p.consultar_tamaño()].insert(pos + p.consultar_tamaño());
+    if (hueco > p.consultar_tamaño()) hueco_pos[hueco - p.consultar_tamaño()].insert(pos + p.consultar_tamaño());
  
     // si no hay mas huecos con el mismo tamaño, se elimina el elemento que contiene el key=hueco
     if (it->second.empty()) hueco_pos.erase(it);
@@ -58,6 +57,7 @@ bool Procesador::eliminar_proceso(int id) {
     id_pos.erase(it_id);
     int pos = it_pos->first;
     int hueco = it_pos->second.consultar_tamaño();
+    memoria_libre += hueco;
 
     it_pos = pos_proceso.erase(it_pos);
     int siguiente_hueco = tamaño_memoria - (pos+hueco);
@@ -69,8 +69,8 @@ bool Procesador::eliminar_proceso(int id) {
         it_hueco->second.erase(pos+hueco);
         //se elimina el hueco, si no existen mas huecos de ese tamaño
         if (it_hueco->second.empty()) hueco_pos.erase(it_hueco);
-    }   
-    hueco += siguiente_hueco;
+        hueco += siguiente_hueco;
+    }
 
 
     int anterior_hueco = pos;
@@ -90,8 +90,8 @@ bool Procesador::eliminar_proceso(int id) {
 
         //se actualiza la posicion
         pos = (it_pos->first + it_pos->second.consultar_tamaño());
+        hueco += anterior_hueco;
     }
-    hueco += anterior_hueco;
 
     hueco_pos[hueco].insert(pos);
 
@@ -102,8 +102,12 @@ void Procesador::avanzar_tiempo(int t) {
     map<int, Proceso>::iterator it = pos_proceso.begin();
 
     while (it != pos_proceso.end()) {
-        if (it->second.avanzar_tiempo(t)) eliminar_proceso(it->second.consultar_id());
-        ++it;
+        if (it->second.avanzar_tiempo(t)) {
+            int id = it->second.consultar_id();
+            ++it;
+            eliminar_proceso(id);
+        }
+        else ++it;
     }
 }
 
