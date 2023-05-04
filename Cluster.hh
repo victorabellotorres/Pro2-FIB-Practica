@@ -9,6 +9,7 @@
 
 #ifndef NO_DIAGRAM
 #include <iostream>
+#include <map>
 #include "BinTree.hh"
 #endif
 using namespace std;
@@ -22,11 +23,12 @@ using namespace std;
 class Cluster
 {
 public:
+
     // Constructores
 
     /** @brief Creadora por defecto
         \pre <em>cierto</em>
-        \post El resultado es un clúster, que contiene un único procesador, siendo este la raíz con id = 0 y la memoria sin inicializar
+        \post El resultado es un clúster, que contiene un único procesador, siendo este la raíz con id y memoria igual a cero y la memoria sin inicializar
     */
     Cluster();
 
@@ -51,9 +53,9 @@ public:
     \post El proceso  se elimina del procesador cuyos id's se indica por parámetro
     La función devuelve 'true' si no ha habido ningún error, en caso contrario devuelve 'false' y el mensaje de error contenido en el parámetro error (si el procesador no existe o el procesador no contiene el proceso)
 */
-    bool eliminar_proceso_procesador(string id_procesador, string id_proceso,  string& error);
+    bool eliminar_proceso_procesador(string id_procesador, int id_proceso,  string& error);
 
-/** @brief Añade un proceso al procesador adecuado
+/** @brief Añade un proceso al procesador más adecuado
     \pre <em>cierto</em>
     \post El proceso p se añade al procesador que tenga el hueco de memoria más ajustado respecto al proceso, el que tenga más memoria libre en caso de empate entre procesadores, el más cercano a la raíz en caso de empate y el que este más a la izquierda si el empate persiste.
     La función devuelve 'true' si no ha habido ningún error, en caso contrario devuelve 'false' y el mensaje de error contenido en el parámetro error (si el proceso no se puede añadir en ningún procesador)
@@ -107,6 +109,26 @@ public:
     \post Escribe la estructura de procesadores del parámetro implícito
 */
     void imprimir_estructura() const;
+
 private:
+
+/** @brief Almacena el árbol de identificadores del clúster */
+    BinTree<string> id_tree;
+
+/** @brief Almacena las identificadores(keys) junto a los procesadores correspondientes */
+    map<string,Procesador> map_procesadores;
+
+/** @brief Función auxiliar que lee el <em>id_tree</em> de manera recursiva y el <em>map_procesadores</em> 
+    \pre El canal de estándar de entrada contiene un identificador del procesador y una memoria
+    \post Devuelve un árbol binario cuya raiz es un identificador leído, y sus hijo izquierdo y derecho son dos árboles binarios de identificadores. Se ha añadido un elemento {id : procesador} al map.
+*/
+    void leer_recursivo(BinTree<string>& c, map<string, Procesador>& map_proc);
+
+/** @brief Función auxiliar recursiva que imprime le estructura del cluster en preorder
+    \pre <em>cierto</em>
+    \post Se imprime en el canal estándar de salida la raiz del árbol pasado por parámetro(un espacio si la raiz es vacia), y entre paréntesis el hijo izquierdo y el hijo derecho.
+*/
+    void imprimir_estructura_recursivo(const BinTree<string>& b) const;
+
 };
 #endif

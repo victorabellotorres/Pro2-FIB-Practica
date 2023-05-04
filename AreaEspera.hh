@@ -10,7 +10,8 @@
 
 #ifndef NO_DIAGRAM
 #include <iostream>
-#include <queue>
+#include <list>
+#include <map>
 #endif
 using namespace std;
 
@@ -87,6 +88,18 @@ public:
     void imprimir() const;
 
 private:
+
+/** @brief Prioridad */
+struct Prioridad
+{
+    list<Proceso> procesos;
+    int procesos_colocados = 0;
+    int procesos_rechazados = 0;
+};
+
+/** @brief Contiene los identificadores de las prioridades(keys) junto a las prioridades(values)*/
+map<string,Prioridad> map_prioridades;
+
 };
 
 #endif

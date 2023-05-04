@@ -22,7 +22,7 @@ public:
 
 /** @brief Constructora por defecto
     \pre <em>cierto</em>
-    \post El resultado es un proceso con un id, tamaño y tiempo no inicializados
+    \post El resultado es un proceso con un id, tamaño y tiempo igual cero.
 */
     Proceso();
 
@@ -31,8 +31,9 @@ public:
 /** @brief Modificadora del tiempo
     \pre El parámetro implícito tiene el tiempo inicializado y t >= 0
     \post El tiempo de ejecución del parámetro implícito progresa t unidades de tiempo.
+    La función devuelve 'true' si el proceso ha acabado de ejecutarse, y 'false' en caso contrario.
 */
-    void avanzar_tiempo(int t);
+    bool avanzar_tiempo(int t);
 
     // Consultores
 
@@ -40,19 +41,19 @@ public:
     \pre El id del parámetro implícito esta inicializado
     \post La función devuelve el id del parámetro implícito
 */
-    int id() const;
+    int consultar_id() const;
 
 /** @brief Consultora del tamaño
     \pre El tamaño del parámetro implícito esta inicializado
     \post La función devuelve el tamaño del parámetro implícito
 */
-    int tamaño() const;
+    int consultar_tamaño() const;
 
 /** @brief Consultora del tiempo
     \pre El tiempo del parámetro implícito esta inicializado
     \post La función devuelve el tiempo del parámero implícito
 */
-    int tiempo() const;
+    int consultar_tiempo() const;
 
     // Lectura y escritura
 
@@ -69,5 +70,13 @@ public:
     void escribir() const;
 
 private:
+/** @brief Identificador del proceso */
+    int id;
+
+/** @brief Unidades que ocupa el proceso en memoria */
+    int tamaño;
+
+/** @brief Tiempo de ejecución del proceso */
+    int tiempo;
 };
 #endif
