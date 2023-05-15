@@ -119,7 +119,7 @@ void Cluster::leer_recursivo(BinTree<string>& c, map<string,Procesador>& map_pro
     }
 }
 
-void Cluster::imprimir_estructura_recursivo(const BinTree<string>& b) const {
+void Cluster::imprimir_estructura_recursivo(const BinTree<string>& b) {
     if (not b.empty()){
         cout << "(" << b.value();
         imprimir_estructura_recursivo(b.left());

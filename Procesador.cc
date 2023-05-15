@@ -19,20 +19,25 @@ Procesador::Procesador(const string id, const int memoria) {
     this->id = id;
     tamaño_memoria = memoria;
     memoria_libre = memoria;
+    // inicialmente se tien eun hueco de toda la memoria en la posicion 0
     hueco_pos[tamaño_memoria].insert(0);
 }
 
 // Modificadores
 
 bool Procesador::añadir_proceso(const Proceso& p) {
+    // !!!! pre = existe proceso, lo compruebo fuera yo
+
+    // it = iterador del hueco igual si existe o immediatamente más grande
     map<int,set<int>>::iterator it = hueco_pos.lower_bound(p.consultar_tamaño());
 
+    // si no existe huecos igual o mas grande
     if (it == hueco_pos.end()) return false;
 
-    // se coloca el proceso en la posicion
     int pos = *(it->second.begin());
     pos_proceso[pos] = p;
     id_pos[p.consultar_id()] = pos;
+    // se elimina el hueco
     it->second.erase(it->second.begin());
 
     int hueco = it->first;
@@ -49,6 +54,7 @@ bool Procesador::añadir_proceso(const Proceso& p) {
 
 bool Procesador::eliminar_proceso(int id) {
     map<int,int>::iterator it_id = id_pos.find(id);
+    // si no existe proceso
     if (it_id == id_pos.end()) return false;
 
     map<int,Proceso>::iterator it_pos = pos_proceso.find(it_id->second);
@@ -60,9 +66,10 @@ bool Procesador::eliminar_proceso(int id) {
     memoria_libre += hueco;
 
     it_pos = pos_proceso.erase(it_pos);
-    int siguiente_hueco = tamaño_memoria - (pos+hueco);
+    int siguiente_hueco;
     // en el caso que el proceso eliminado no fuese el último
     if (it_pos != pos_proceso.end()) siguiente_hueco = it_pos->first - (pos+hueco);
+    else  siguiente_hueco = tamaño_memoria - (pos+hueco);
     if (siguiente_hueco > 0) {
         map<int,set<int>>::iterator it_hueco = hueco_pos.find(siguiente_hueco);
         //se elimina la posicion donde esta el siguiente hueco
@@ -72,13 +79,15 @@ bool Procesador::eliminar_proceso(int id) {
         hueco += siguiente_hueco;
     }
 
-    int anterior_hueco = pos;
     int pos_anterior_hueco = 0;
+    int anterior_hueco;
+    // Si existe un hueco anterior
     if (it_pos != pos_proceso.begin()) {
         --it_pos;
         pos_anterior_hueco =  it_pos->first + it_pos->second.consultar_tamaño();
         anterior_hueco = pos - pos_anterior_hueco;
-    }
+    } 
+    else anterior_hueco = pos;
 
     if (anterior_hueco > 0) {
         map<int,set<int>>::iterator it_hueco = hueco_pos.find(anterior_hueco);
@@ -100,9 +109,7 @@ void Procesador::avanzar_tiempo(int t) {
 
     while (it != pos_proceso.end()) {
         if (it->second.avanzar_tiempo(t)) {
-            int id = it->second.consultar_id();
-            ++it;
-            eliminar_proceso(id);
+            eliminar_proceso(it);
         }
         else ++it;
     }
@@ -138,9 +145,11 @@ void Procesador::leer() {
     cin >> id >> tamaño_memoria;
 
     memoria_libre = tamaño_memoria;
+    //esto de aqui no hace falta para pasar el jutge pero me parecia logico reinicias los iteradores
     id_pos = map<int, int>();
     pos_proceso = map<int, Proceso>();
     hueco_pos = map<int, set<int>>();
+
     hueco_pos[tamaño_memoria].insert(0);
 }
 
@@ -152,4 +161,12 @@ void Procesador::escribir() const {
         it->second.escribir();
         ++it;
     }
+}
+
+//--------------------------------Métodos prvados--------------------------------
+
+void Procesador::eliminar_proceso(map<int, Proceso>::iterator& it) {
+    int id = it->second.consultar_id();
+    ++it;
+    eliminar_proceso(id);
 }

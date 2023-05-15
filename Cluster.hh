@@ -122,13 +122,13 @@ private:
     \pre El canal de estándar de entrada contiene un identificador del procesador y una memoria
     \post Devuelve un árbol binario cuya raiz es un identificador leído, y sus hijo izquierdo y derecho son dos árboles binarios de identificadores. Se ha añadido un elemento {id : procesador} al map.
 */
-    void leer_recursivo(BinTree<string>& c, map<string, Procesador>& map_proc);
+    static void leer_recursivo(BinTree<string>& c, map<string, Procesador>& map_proc);
 
 /** @brief Función auxiliar recursiva que imprime le estructura del cluster en preorder
     \pre <em>cierto</em>
     \post Se imprime en el canal estándar de salida la raiz del árbol pasado por parámetro(un espacio si la raiz es vacia), y entre paréntesis el hijo izquierdo y el hijo derecho.
 */
-    void imprimir_estructura_recursivo(const BinTree<string>& b) const;
+    static void imprimir_estructura_recursivo(const BinTree<string>& b);
 
 };
 #endif

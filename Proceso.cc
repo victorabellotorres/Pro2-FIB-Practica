@@ -18,6 +18,7 @@ Proceso::Proceso() {
 
 bool Proceso::avanzar_tiempo(int t) {
     tiempo -= t;
+    if (t < 0) t = 0;
 
     return tiempo <= 0;
 }

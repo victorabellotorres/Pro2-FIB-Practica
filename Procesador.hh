@@ -131,5 +131,11 @@ private:
 
 /** @brief Almacena los espacios vacios en memoria(keys) junto a las posiciones donde se encuentran los espacios(values)*/
     map<int,set<int>> hueco_pos;
+
+/** @brief Elimina el proceso al que apunta el iterador 
+    \pre <em>cierto</em>
+    \post El elemento apuntado por el iter
+*/
+    void eliminar_proceso(map<int, Proceso>::iterator& it);
 };
 #endif
