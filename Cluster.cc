@@ -74,48 +74,14 @@ bool Cluster::eliminar_proceso_procesador(string id_procesador, int id_proceso, 
 }
 
 bool Cluster::añadir_proceso(const Proceso& p) {
-    queue<BinTree<string>> cola_ids;
     map<string, Procesador>::iterator it_mejor_procesador;
-    int max_hueco_mas_ajustado = 0;
-    int max_memoria_libre = 0;
+    int hueco_mas_ajustado = 0;
+    int profundidad_actual = 0;
+    int profundiad_mejor_procesador = 0;
 
-    cola_ids.push(arbol_ids);
-    while(not cola_ids.empty()) {
-        if (not cola_ids.front().left().empty()) cola_ids.push(cola_ids.front().left());
-        if (not cola_ids.front().right().empty()) cola_ids.push(cola_ids.front().right());
+    buscar_mejor_procesador(arbol_ids, p, it_mejor_procesador, hueco_mas_ajustado, profundiad_mejor_procesador, profundidad_actual);
 
-        map<string, Procesador>::iterator it = map_procesadores.find(cola_ids.front().value());
-        if (not it->second.existe_proceso(p.consultar_id())) {
-            int hueco = it->second.hueco_mas_ajustado(p.consultar_tamaño());
-            if (hueco > 0) {
-                // cuando se encuentra el primer procesador con hueco > 0
-                if (max_hueco_mas_ajustado == 0) {
-
-                    it_mejor_procesador = it;
-                    max_memoria_libre = it_mejor_procesador->second.consultar_memoria_libre();
-                    max_hueco_mas_ajustado = hueco;
-                }
-                else if (hueco <= max_hueco_mas_ajustado) {
-                    if (hueco == max_hueco_mas_ajustado) {
-
-                        if (it->second.consultar_memoria_libre() > max_memoria_libre) {
-                            it_mejor_procesador = it;
-                            max_memoria_libre = it->second.consultar_memoria_libre();
-                        }
-                    }
-                    else {
-                        it_mejor_procesador = it;
-                        max_memoria_libre = it_mejor_procesador->second.consultar_memoria_libre();
-                        max_hueco_mas_ajustado = hueco;
-                    }
-                }
-            }
-        }
-
-        cola_ids.pop();
-    }
-
-    if (max_hueco_mas_ajustado > 0) {
+    if (hueco_mas_ajustado > 0) {
         it_mejor_procesador->second.añadir_proceso(p);
         return true;
     } else return false;
@@ -246,4 +212,43 @@ void Cluster::leer_datos_arbol_aux() {
     leer_datos_arbol_aux();
     }
 }
+
+void Cluster::buscar_mejor_procesador(const BinTree<string>& a, const Proceso& p, map<string,Procesador>::iterator& it_mejor_procesador, int& hueco_mas_ajustado, int& prof_mejor_procesador, int prof_actual) {
+    if (not a.empty()) {
+        buscar_mejor_procesador(a.left(), p, it_mejor_procesador ,hueco_mas_ajustado, prof_mejor_procesador, ++prof_actual);
+
+        map<string, Procesador>::iterator it = map_procesadores.find(a.value());
+        if (not it->second.existe_proceso(p.consultar_id())) {
+            int hueco = it->second.hueco_mas_ajustado(p.consultar_tamaño());
+            if (hueco > 0) {
+                // cuando se encuentra el primer procesador con hueco > 0
+                if (hueco_mas_ajustado == 0) {
+                    it_mejor_procesador = it;
+                    hueco_mas_ajustado = hueco;
+                    prof_mejor_procesador = prof_actual;
+                }
+                else if (hueco == hueco_mas_ajustado) {
+                    if (it->second.consultar_memoria_libre() == it_mejor_procesador->second.consultar_memoria_libre()) {
+                        if (prof_actual < prof_mejor_procesador) {
+                            it_mejor_procesador = it;
+                            prof_mejor_procesador = prof_actual;
+                        } 
+                    }
+                    else if (it->second.consultar_memoria_libre() > it_mejor_procesador->second.consultar_memoria_libre())  {
+                        it_mejor_procesador = it;
+                        prof_mejor_procesador = prof_actual;
+                    }
+                }
+                else if (hueco < hueco_mas_ajustado) {
+                    it_mejor_procesador = it;
+                    hueco_mas_ajustado = hueco;
+                    prof_mejor_procesador = prof_actual; 
+                }
+            }
+        }
+
+        buscar_mejor_procesador(a.right(), p, it_mejor_procesador ,hueco_mas_ajustado, prof_mejor_procesador, ++prof_actual);
+    }
+}
+
 
