@@ -26,13 +26,13 @@ int main()
             c.leer();
             cout << "#" << comando << endl;
         }
-        // else if (comando == "modificar_cluster" or comando == "mc") {
-        //     string id_procesador;
-        //     cin >> id_procesador;
-        //     Cluster c_aux;
-        //     c_aux.leer();
-        //     if (not c.modificar(id_procesador, c_aux, error)) cout << "error: " << error << endl;
-        // }
+        else if (comando == "modificar_cluster" or comando == "mc") {
+            string id_procesador;
+            cin >> id_procesador;
+            cout << "#" << comando << " " << id_procesador << endl;
+            if (not c.modificar(id_procesador, error)) cout << "error: " << error << endl;
+            
+        }
         else if (comando == "alta_prioridad" or comando == "ap") {
             string id_prioridad;
             cin >> id_prioridad;
@@ -68,11 +68,12 @@ int main()
             cout << "#" << comando << " " << id_procesador << " " << id_proceso << endl;
             if (not c.eliminar_proceso_procesador(id_procesador, id_proceso, error)) cout << "error: " << error << endl;
         }
-        // else if (comando == "enviar_procesos_cluster") {
-        //     int n;
-        //     cin >> n;
-        //     ae.enviar_procesos_cluster(c, n);
-        // }
+        else if (comando == "enviar_procesos_cluster" or comando == "epc") {
+            int n;
+            cin >> n;
+            cout << "#" << comando << " " << n << endl;
+            ae.enviar_procesos_cluster(c, n);
+        }
         else if (comando == "avanzar_tiempo" or comando == "at") {
             int t;
             cin >> t;
@@ -103,13 +104,16 @@ int main()
             cout << "#" << comando << endl;
             c.imprimir_estructura();
         }
-        // else if (comando == "compactar_memoria_procesador" or comando == "cmp") {
-        //     string id_procesador;
-        //     if (not c.compactar_memoria_procesador(id_procesador, error)) cout << "error: " << error << endl;
-        // }
-        // else if (comando == "compactar_memoria_cluster" or comando == "cmc") {
-        //     c.compactar_memoria();
-        // }
+        else if (comando == "compactar_memoria_procesador" or comando == "cmp") {
+            string id_procesador;
+            cin >> id_procesador;
+            cout << "#" << comando << " " << id_procesador << endl;
+            if (not c.compactar_memoria_procesador(id_procesador, error)) cout << "error: " << error << endl;
+        }
+        else if (comando == "compactar_memoria_cluster" or comando == "cmc") {
+            cout << "#" << comando << endl;
+            c.compactar_memoria();
+        }
         cin >> comando;
     }
 }

@@ -11,13 +11,35 @@
 Cluster::Cluster() {
     Procesador p;
 
-    id_tree = BinTree<string>(p.consultar_id());
+    arbol_ids = BinTree<string>(p.consultar_id());
     map_procesadores = map<string, Procesador>();
 
     map_procesadores[p.consultar_id()] = p;
 }
 
 // Modificadores
+
+bool Cluster::modificar(string id_procesador, string& error) {
+    map<string, Procesador>::iterator it = map_procesadores.find(id_procesador);
+    
+    if (it == map_procesadores.end()) {
+        error = "no existe procesador";
+        return false;
+    } else if (it->second.contiene_proceso()) {
+        error = "procesador con procesos";
+        return false;
+    }
+
+    BinTree<string> arbol_final;
+
+    if (not añadir_arbol(id_procesador, arbol_ids, arbol_final)) {
+        error = "procesador con auxiliares";
+        return false;
+    }
+
+    arbol_ids = arbol_final;
+    return true;
+}
 
 bool Cluster::añadir_proceso_procesador(string id_procesador, const Proceso& p, string &error) {
     map<string,Procesador>::iterator it = map_procesadores.find(id_procesador);
@@ -51,7 +73,53 @@ bool Cluster::eliminar_proceso_procesador(string id_procesador, int id_proceso, 
     return true;
 }
 
-//TODO: añadir proceso
+bool Cluster::añadir_proceso(const Proceso& p) {
+    queue<BinTree<string>> cola_ids;
+    map<string, Procesador>::iterator it_mejor_procesador;
+    int max_hueco_mas_ajustado = 0;
+    int max_memoria_libre = 0;
+
+    cola_ids.push(arbol_ids);
+    while(not cola_ids.empty()) {
+        if (not cola_ids.front().left().empty()) cola_ids.push(cola_ids.front().left());
+        if (not cola_ids.front().right().empty()) cola_ids.push(cola_ids.front().right());
+
+        map<string, Procesador>::iterator it = map_procesadores.find(cola_ids.front().value());
+        if (not it->second.existe_proceso(p.consultar_id())) {
+            int hueco = it->second.hueco_mas_ajustado(p.consultar_tamaño());
+            if (hueco > 0) {
+                // cuando se encuentra el primer procesador con hueco > 0
+                if (max_hueco_mas_ajustado == 0) {
+
+                    it_mejor_procesador = it;
+                    max_memoria_libre = it_mejor_procesador->second.consultar_memoria_libre();
+                    max_hueco_mas_ajustado = hueco;
+                }
+                else if (hueco <= max_hueco_mas_ajustado) {
+                    if (hueco == max_hueco_mas_ajustado) {
+
+                        if (it->second.consultar_memoria_libre() > max_memoria_libre) {
+                            it_mejor_procesador = it;
+                            max_memoria_libre = it->second.consultar_memoria_libre();
+                        }
+                    }
+                    else {
+                        it_mejor_procesador = it;
+                        max_memoria_libre = it_mejor_procesador->second.consultar_memoria_libre();
+                        max_hueco_mas_ajustado = hueco;
+                    }
+                }
+            }
+        }
+
+        cola_ids.pop();
+    }
+
+    if (max_hueco_mas_ajustado > 0) {
+        it_mejor_procesador->second.añadir_proceso(p);
+        return true;
+    } else return false;
+}
 
 void Cluster::avanzar_tiempo(int t) {
     map<string,Procesador>::iterator it = map_procesadores.begin();
@@ -62,16 +130,31 @@ void Cluster::avanzar_tiempo(int t) {
     }
 }
 
-// TODO: compactar memorias
+bool Cluster::compactar_memoria_procesador(string id_procesador, string& error) {
+    map<string, Procesador>::iterator it = map_procesadores.find(id_procesador);
+    
+    if (it == map_procesadores.end()) {
+        error = "no existe procesador";
+        return false;
+    }
+    it->second.compactar_memoria();
+    return true;
+}
+
+void Cluster::compactar_memoria() {
+    map<string, Procesador>::iterator it = map_procesadores.begin();
+
+    while (it != map_procesadores.end()) {
+        it->second.compactar_memoria();
+        ++it;
+    }
+}
 
 // Lectura y escritura
 
 void Cluster::leer() {
     map_procesadores = map<string, Procesador>();
-    BinTree<string> c;
-
-    leer_recursivo(c, map_procesadores);
-    id_tree = c;
+    leer_recursivo(arbol_ids, map_procesadores);
 }
 
 bool Cluster::imprimir_procesador(string id_procesador, string& error) const {
@@ -95,7 +178,7 @@ void Cluster::imprimir_procesadores() const  {
 }
 
 void Cluster::imprimir_estructura() const {
-    imprimir_estructura_recursivo(id_tree);
+    imprimir_estructura_recursivo(arbol_ids);
     cout << endl;
 }
 
@@ -128,3 +211,39 @@ void Cluster::imprimir_estructura_recursivo(const BinTree<string>& b) {
     }
     else cout << " ";
 }
+
+bool Cluster::añadir_arbol(string id_procesador, const BinTree<string>& arbol_original, BinTree<string>& arbol_final) {
+    if (not arbol_original.empty()) {
+        if (arbol_original.value() == id_procesador) {
+
+            if (not arbol_original.left().empty() or not arbol_original.right().empty()) {
+                leer_datos_arbol_aux();
+                return false;
+            }
+            leer_recursivo(arbol_final, map_procesadores);
+            map_procesadores.erase(arbol_original.value());
+        }
+        else {
+            BinTree<string> arbol_derecha;
+            BinTree<string> arbol_izquierda;
+            if (not añadir_arbol(id_procesador, arbol_original.left(), arbol_izquierda)) return false;
+            if (not añadir_arbol(id_procesador, arbol_original.right(), arbol_derecha)) return false;
+            
+            arbol_final = BinTree<string>(arbol_original.value(), arbol_izquierda, arbol_derecha);
+        }
+    }
+    return true;
+}
+
+void Cluster::leer_datos_arbol_aux() {
+    string id;
+    cin >> id;
+
+    if (id != "*") {
+    int memoria;
+    cin >> memoria;
+    leer_datos_arbol_aux();
+    leer_datos_arbol_aux();
+    }
+}
+

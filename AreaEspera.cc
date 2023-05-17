@@ -59,6 +59,28 @@ bool AreaEspera::añadir_proceso(string id_prioridad, const Proceso& p, string& 
     return true;
 }
 
+void AreaEspera::enviar_procesos_cluster(Cluster& c, int n) {
+    map<string, Prioridad>::iterator it_prioridades = map_prioridades.begin();
+    while (n > 0 and it_prioridades != map_prioridades.end()) {
+
+        int tam_prioridad = it_prioridades->second.procesos.size();
+        while (n > 0 and tam_prioridad > 0) {
+
+            if (c.añadir_proceso(*(it_prioridades->second.procesos.begin()))) {
+                ++it_prioridades->second.procesos_colocados;
+                --n;
+            }
+            else {
+                it_prioridades->second.procesos.insert(it_prioridades->second.procesos.end(), *(it_prioridades->second.procesos.begin()));
+                ++it_prioridades->second.procesos_rechazados;
+            }
+            it_prioridades->second.procesos.erase(it_prioridades->second.procesos.begin());
+            --tam_prioridad;
+        }
+        ++it_prioridades;
+    }
+}
+
 // Lectura y escritura
 
 void AreaEspera::leer(int n) {

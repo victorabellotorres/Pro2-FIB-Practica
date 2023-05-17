@@ -15,7 +15,7 @@ Procesador::Procesador() {
     hueco_pos[0].insert(0);
 }
 
-Procesador::Procesador(const string id, const int memoria) {
+Procesador::Procesador(string id, int memoria) {
     this->id = id;
     tamaño_memoria = memoria;
     memoria_libre = memoria;
@@ -43,7 +43,7 @@ bool Procesador::añadir_proceso(const Proceso& p) {
     int hueco = it->first;
     // si el tamaño del proceso es mas pequeño que el hueco, se actualizan los huecos 
     if (hueco > p.consultar_tamaño()) hueco_pos[hueco - p.consultar_tamaño()].insert(pos + p.consultar_tamaño());
- 
+
     // si no hay mas huecos con el mismo tamaño, se elimina el elemento que contiene el key=hueco
     if (it->second.empty()) hueco_pos.erase(it);
 
@@ -115,7 +115,29 @@ void Procesador::avanzar_tiempo(int t) {
     }
 }
 
-// TODO: compactar memorias
+void Procesador::compactar_memoria() {
+
+    if (hueco_pos.size() == 1 and hueco_pos.begin()->second.size() == 1) {
+        if (pos_proceso.lower_bound(*(hueco_pos.begin()->second.begin())) == pos_proceso.end()) return;
+    }
+
+    map<int, Proceso>::iterator it = pos_proceso.begin();
+    int pos = 0; // el indice donde se deben colocal los procesos
+    // bucle para descartar los procesos que ya estan ordenados
+    while (it != pos_proceso.end() and it->first == pos) {
+        pos += it->second.consultar_tamaño();
+        ++it;
+    }
+
+    while (it != pos_proceso.end()) {
+        pos_proceso.insert(it, make_pair(pos, it->second));
+        id_pos[it->second.consultar_id()] = pos;
+        pos += it->second.consultar_tamaño();
+        it = pos_proceso.erase(it);
+    }
+    hueco_pos = map<int, set<int>>();
+    hueco_pos[memoria_libre].insert(pos);
+}
 
 // Consultores
 
@@ -136,7 +158,9 @@ bool Procesador::existe_proceso(int id) const {
 }
 
 int Procesador::hueco_mas_ajustado(int tamaño) const {
-    return *(hueco_pos.lower_bound(tamaño)->second.begin());
+    map<int,set<int>>::const_iterator it = hueco_pos.lower_bound(tamaño);
+    if (it == hueco_pos.end()) return 0;
+    return it->first;
 }
 
 // Lectura y escritura
