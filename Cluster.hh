@@ -143,7 +143,7 @@ private:
     void leer_datos_arbol_aux();
 
 /** @brief */
-void buscar_mejor_procesador(const BinTree<string>& b, const Proceso& p, map<string,Procesador>::iterator& it_mejor_procesador, int& hueco_mas_ajustado, int& prof_mejor_procesador, int prof_actual);
+void buscar_mejor_procesador(const BinTree<string>& b, const Proceso& p, map<string,Procesador>::iterator& it_mejor_procesador, int& hueco_mas_ajustado, int& prof_mejor_procesador, int& prof_actual);
 
 };
 #endif

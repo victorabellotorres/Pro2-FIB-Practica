@@ -117,9 +117,9 @@ void Procesador::avanzar_tiempo(int t) {
 
 void Procesador::compactar_memoria() {
 
-    if (hueco_pos.size() == 1 and hueco_pos.begin()->second.size() == 1) {
-        if (pos_proceso.lower_bound(*(hueco_pos.begin()->second.begin())) == pos_proceso.end()) return;
-    }
+    // if (hueco_pos.size() == 1 and hueco_pos.begin()->second.size() == 1) {
+    //     if (pos_proceso.lower_bound(*(hueco_pos.begin()->second.begin())) == pos_proceso.end()) return;
+    // }
 
     map<int, Proceso>::iterator it = pos_proceso.begin();
     int pos = 0; // el indice donde se deben colocal los procesos

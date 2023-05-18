@@ -23,9 +23,11 @@ bool Cluster::modificar(string id_procesador, string& error) {
     map<string, Procesador>::iterator it = map_procesadores.find(id_procesador);
     
     if (it == map_procesadores.end()) {
+        leer_datos_arbol_aux();
         error = "no existe procesador";
         return false;
     } else if (it->second.contiene_proceso()) {
+        leer_datos_arbol_aux();
         error = "procesador con procesos";
         return false;
     }
@@ -186,8 +188,8 @@ bool Cluster::añadir_arbol(string id_procesador, const BinTree<string>& arbol_o
                 leer_datos_arbol_aux();
                 return false;
             }
-            leer_recursivo(arbol_final, map_procesadores);
             map_procesadores.erase(arbol_original.value());
+            leer_recursivo(arbol_final, map_procesadores);
         }
         else {
             BinTree<string> arbol_derecha;
@@ -213,9 +215,12 @@ void Cluster::leer_datos_arbol_aux() {
     }
 }
 
-void Cluster::buscar_mejor_procesador(const BinTree<string>& a, const Proceso& p, map<string,Procesador>::iterator& it_mejor_procesador, int& hueco_mas_ajustado, int& prof_mejor_procesador, int prof_actual) {
+void Cluster::buscar_mejor_procesador(const BinTree<string>& a, const Proceso& p, map<string,Procesador>::iterator& it_mejor_procesador, int& hueco_mas_ajustado, int& prof_mejor_procesador, int& prof_actual) {
     if (not a.empty()) {
-        buscar_mejor_procesador(a.left(), p, it_mejor_procesador ,hueco_mas_ajustado, prof_mejor_procesador, ++prof_actual);
+        ++prof_actual;
+        buscar_mejor_procesador(a.left(), p, it_mejor_procesador ,hueco_mas_ajustado, prof_mejor_procesador, prof_actual);
+        buscar_mejor_procesador(a.right(), p, it_mejor_procesador ,hueco_mas_ajustado, prof_mejor_procesador, prof_actual);
+        --prof_actual;
 
         map<string, Procesador>::iterator it = map_procesadores.find(a.value());
         if (not it->second.existe_proceso(p.consultar_id())) {
@@ -246,9 +251,6 @@ void Cluster::buscar_mejor_procesador(const BinTree<string>& a, const Proceso& p
                 }
             }
         }
-
-        buscar_mejor_procesador(a.right(), p, it_mejor_procesador ,hueco_mas_ajustado, prof_mejor_procesador, ++prof_actual);
     }
 }
-
 
